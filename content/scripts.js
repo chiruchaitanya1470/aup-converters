@@ -10,6 +10,7 @@ promptDivTag.style.backgroundColor='rgba(0, 0, 0, 0.5)';
 promptDivTag.style.width='100%';
 promptDivTag.style.justifyContent='center';
 promptDivTag.style.alignItems='center';
+promptDivTag.style.zIndex='1000';
 var promptheading=document.createElement('div');
 promptheading.style.backgroundColor='white';
 var promptheading1=document.createElement('div');
@@ -83,7 +84,7 @@ crosslinkingpopups.onclick=crosslinkkingpop;
 promptbox.appendChild(crosslinkingpopups);
 // prompt cancle
 var promptcancle=document.createElement('button');
-promptcancle.textContent="cancle";
+promptcancle.textContent="cancel";
 promptcancle.style.margin='5px';
 promptcancle.style.padding='10px 20px';
 promptcancle.style.border='none';
