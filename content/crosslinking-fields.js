@@ -1,4 +1,3 @@
-javascript:
 var anchorLinks=0;
 var anchorLinksSet = new Set();
 var releatedTopics=document.getElementsByClassName("surface-tags content");
