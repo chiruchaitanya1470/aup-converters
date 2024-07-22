@@ -1,5 +1,25 @@
+javascript:
 var anchorLinks=0;
+var newElement;
+var newInput;
 var anchorLinksSet = new Set();
+
+var authorProfiles=document.getElementsByClassName("surfaceProfile-author-description");
+for(var i=0;i<authorProfiles.length;i++){
+    var attribute=authorProfiles[i].getElementsByClassName('surfaceProfile-author-link');
+    for(var j=0;j<attribute.length;j++){
+        var hrefLink=attribute[j].href;
+        var crosslinkkingvalue=crosslinkking(hrefLink);
+        anchorLinksSet.add(hrefLink);
+        var divElement= newElementCreator(crosslinkkingvalue);
+        authorProfiles[i].appendChild(divElement);
+        anchorLinks=anchorLinks+1;
+    }
+   
+}
+var anchorLinks=0;
+
+
 var releatedTopics=document.getElementsByClassName("surface-tags content");
 for(var i=0;i<releatedTopics.length;i++){
     var attribute=releatedTopics[i].getElementsByTagName('a');
@@ -7,21 +27,28 @@ for(var i=0;i<releatedTopics.length;i++){
         var hrefLink=attribute[j].href;
         var crosslinkkingvalue=crosslinkking(hrefLink);
         anchorLinksSet.add(hrefLink);
-        var newElement=document.createElement('div');
-        newElement.className="hyperlinkfield";
-        var newInput=document.createElement('input');
-        newInput.type="text";
-        newInput.style.backgroundColor='blue';
-
-        newInput.value=crosslinkkingvalue;
-        newElement.appendChild(newInput);
-        releatedTopics[i].appendChild(newElement);
-        styles(anchorLinks);
-        adjustInputWidth(newInput);
+        var divElement= newElementCreator(crosslinkkingvalue);
+        releatedTopics[i].appendChild(divElement);
         anchorLinks=anchorLinks+1;
     }
-    console.log("chiru" ); 
+
 }
+var anchorLinks=0;
+
+
+function newElementCreator(liveUrl){
+    newElement=document.createElement('div');
+    newElement.className="hyperlinkfield";
+    newInput=document.createElement('input');
+    newInput.type="text";
+    newInput.value=liveUrl;
+    newElement.appendChild(newInput);
+    styles(anchorLinks);
+    adjustInputWidth(newInput);
+    return newElement;
+}
+
+
 anchorLinksSet.forEach(function(links){
     console.log(links);
 });
@@ -32,10 +59,9 @@ function styles(positionDigit){
     newElement.style.top= number+40+'px';
     newElement.style.left='140px';
     newElement.style.fontSize='25px';
-    newElement.style.border= '8px solid';
-    newElement.style.borderRadius= '8px';
-    newElement.style.borderColor= 'aqua';
-    console.log("done with work");
+    newElement.style.border= '5px solid';
+    newElement.style.borderColor= 'rgb(71, 151, 91)';
+    newInput.style.backgroundColor='#CFEEA8';
 
 }
 function adjustInputWidth(input) {
@@ -46,9 +72,9 @@ function adjustInputWidth(input) {
 
 
 function crosslinkking(crosslinkkingurl){
-
     var CurrentUrl=crosslinkkingurl;
-    
+
+
     var localRegions=CurrentUrl.includes("_fr")||CurrentUrl.includes("_ao")||CurrentUrl.includes("_be")||CurrentUrl.includes("_be")||CurrentUrl.includes("_bg")||CurrentUrl.includes("_br")
         ||CurrentUrl.includes("_by")||CurrentUrl.includes("_ca")||CurrentUrl.includes("_ch")||CurrentUrl.includes("_cn")||CurrentUrl.includes("_cz")
         ||CurrentUrl.includes("_ee")||CurrentUrl.includes("_es")||CurrentUrl.includes("_gr")||CurrentUrl.includes("_hr")||CurrentUrl.includes("_hu")
@@ -97,8 +123,6 @@ function crosslinkking(crosslinkkingurl){
         var liveRegion=CurrentUrl.substring(count+7,count+12);
         var hallWayPageName= hallWayNameExtractor(livePathUrl);
         var indexpageName=hallWayPage(hallWayPageName);
-        console.log(indexpageName);
-        console.log("live to edit");
         if(CurrentUrl.includes("/people/")){
             var livePathUrl=CurrentUrl.substring(count+20);
             var livePathUrl=Array.from(livePathUrl)[0]+"/"+livePathUrl;
