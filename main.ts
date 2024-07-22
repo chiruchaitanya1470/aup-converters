@@ -3,7 +3,7 @@ import { serveDir } from "https://deno.land/std@0.140.0/http/file_server.ts";
 
 serve((req) => {
   const pathname = new URL(req.url).pathname;
-  if (pathname.startsWith("/static")) {
+  if (pathname.startsWith("/content")) {
     return serveDir(req, {
       fsRoot: `${Deno.cwd()}`,
     });
