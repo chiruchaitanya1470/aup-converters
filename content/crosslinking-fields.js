@@ -78,6 +78,7 @@ function styles(positionDigit){
     newElement.style.fontSize='25px';
     newElement.style.border= '5px solid';
     newElement.style.borderColor= 'rgb(71, 151, 91)';
+    newElement.style.zIndex='1000';
     newInput.style.backgroundColor='#CFEEA8';
 
 }
