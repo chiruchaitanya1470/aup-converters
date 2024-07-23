@@ -17,7 +17,24 @@ for(var i=0;i<authorProfiles.length;i++){
     }
    
 }
+
+
+///////////////////////////////////
+var contributorsProfiles=document.getElementsByClassName("surfaceProfile-contributors-section");
+for(var i=0;i<contributorsProfiles.length;i++){
+    var attribute=contributorsProfiles[i].getElementsByClassName('surfaceProfile-contributor');
+    for(var j=0;j<attribute.length;j++){
+        var hrefLink=attribute[j].querySelectorAll('h4>a')[0].href;
+        var crosslinkkingvalue=crosslinkking(hrefLink);
+        anchorLinksSet.add(hrefLink);
+        var divElement= newElementCreator(crosslinkkingvalue);
+        contributorsProfiles[i].appendChild(divElement);
+        anchorLinks=anchorLinks+1;
+    }
+   
+}
 var anchorLinks=0;
+//////////////////////////////////////////////
 
 
 var releatedTopics=document.getElementsByClassName("surface-tags content");
