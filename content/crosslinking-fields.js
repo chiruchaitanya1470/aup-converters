@@ -1,4 +1,5 @@
-var anchorLinks=0;
+javascript:
+var anchorlinksposition=0;
 var newElement;
 var newInput;
 var anchorLinksSet = new Set();
@@ -12,7 +13,7 @@ for(var i=0;i<authorProfiles.length;i++){
         anchorLinksSet.add(hrefLink);
         var divElement= newElementCreator(crosslinkkingvalue);
         authorProfiles[i].appendChild(divElement);
-        anchorLinks=anchorLinks+1;
+        anchorlinksposition=anchorlinksposition+1;
     }
    
 }
@@ -27,11 +28,11 @@ for(var i=0;i<contributorsProfiles.length;i++){
         anchorLinksSet.add(hrefLink);
         var divElement= newElementCreator(crosslinkkingvalue);
         contributorsProfiles[i].appendChild(divElement);
-        anchorLinks=anchorLinks+1;
+        anchorlinksposition=anchorlinksposition+1;
     }
    
 }
-var anchorLinks=0;
+var anchorlinksposition=0;
 
 var nestedtile=document.getElementsByClassName("nestedTile-parsys");
 for(var i=0;i<nestedtile.length;i++){
@@ -41,11 +42,12 @@ for(var i=0;i<nestedtile.length;i++){
         var crosslinkkingvalue=crosslinkking(hrefLink);
         anchorLinksSet.add(hrefLink);
         var divElement= newElementCreator(crosslinkkingvalue);
+        divElement.style.left='-700px';
         nestedtile[i].appendChild(divElement);
-        anchorLinks=anchorLinks+1;
+        anchorlinksposition=anchorlinksposition+1;
     }
 }
-var anchorLinks=0;
+var anchorlinksposition=0;
 
 
 
@@ -59,11 +61,11 @@ for(var i=0;i<releatedTopics.length;i++){
         anchorLinksSet.add(hrefLink);
         var divElement= newElementCreator(crosslinkkingvalue);
         releatedTopics[i].appendChild(divElement);
-        anchorLinks=anchorLinks+1;
+        anchorlinksposition=anchorlinksposition+1;
     }
 
 }
-var anchorLinks=0;
+var anchorlinksposition=0;
 
 
 function newElementCreator(liveUrl){
@@ -73,7 +75,7 @@ function newElementCreator(liveUrl){
     newInput.type="text";
     newInput.value=liveUrl;
     newElement.appendChild(newInput);
-    styles(anchorLinks);
+    styles(anchorlinksposition);
     adjustInputWidth(newInput);
     return newElement;
 }
@@ -82,6 +84,18 @@ function newElementCreator(liveUrl){
 anchorLinksSet.forEach(function(links){
     console.log(links);
 });
+
+function nestedtilestyles(positionDigit){
+    var number=positionDigit*40;
+    newElement.style.position= 'absolute';
+    newElement.style.top= number+40+'px';
+    newElement.style.left='140px';
+    newElement.style.fontSize='25px';
+    newElement.style.border= '5px solid';
+    newElement.style.borderColor= 'rgb(71, 151, 91)';
+    newElement.style.zIndex='180';
+    newInput.style.backgroundColor='#CFEEA8';
+}
 
 function styles(positionDigit){
     var number=positionDigit*40;
