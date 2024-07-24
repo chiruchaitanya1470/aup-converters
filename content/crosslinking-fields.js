@@ -23,7 +23,7 @@ var contributorsProfiles=document.getElementsByClassName("surfaceProfile-contrib
 for(var i=0;i<contributorsProfiles.length;i++){
     var attribute=contributorsProfiles[i].getElementsByClassName('surfaceProfile-contributor');
     for(var j=0;j<attribute.length;j++){
-        var hrefLink=attribute[j].querySelectorAll('h4>a')[0].href;
+        var hrefLink=attribute[j].querySelectorAll('h4>a')[j].href;
         var crosslinkkingvalue=crosslinkking(hrefLink);
         anchorLinksSet.add(hrefLink);
         var divElement= newElementCreator(crosslinkkingvalue);
@@ -33,6 +33,22 @@ for(var i=0;i<contributorsProfiles.length;i++){
    
 }
 var anchorLinks=0;
+
+var nestedtile=document.getElementsByClassName("nestedTile-parsys");
+for(var i=0;i<nestedtile.length;i++){
+    var attribute=nestedtile[i].getElementsByClassName('linkAreaLink component section');
+    for(var j=0;j<attribute.length;j++){
+        var hrefLink=attribute[j].querySelectorAll('div>h5>a')[j].href;
+        var crosslinkkingvalue=crosslinkking(hrefLink);
+        anchorLinksSet.add(hrefLink);
+        var divElement= newElementCreator(crosslinkkingvalue);
+        nestedtile[i].appendChild(divElement);
+        anchorLinks=anchorLinks+1;
+    }
+}
+var anchorLinks=0;
+
+
 
 
 var releatedTopics=document.getElementsByClassName("surface-tags content");
