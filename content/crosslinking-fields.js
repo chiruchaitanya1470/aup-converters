@@ -1,4 +1,3 @@
-javascript:
 var anchorLinks=0;
 var newElement;
 var newInput;
